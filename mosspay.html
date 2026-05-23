@@ -10,17 +10,20 @@
 
     <canvas id="leafCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <nav class="fixed top-0 w-full z-50 bg-transparent">
-        <div class="max-w-7xl mx-auto px-6 h-36 flex flex-col sm:flex-row items-center justify-between pt-4 sm:pt-0 gap-2">
+    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-md border-b border-gray-100/50">
+        <div class="max-w-7xl mx-auto px-6 h-36 flex items-center justify-between relative">
             <div class="flex items-center">
-                <a href="index.html"><img src="assets/logo.png" alt="KSynapse Logo" class="h-24 sm:h-32 w-auto object-contain"></a>
+                <a href="index.html"><img src="assets/logo.png" alt="KSynapse Logo" class="h-32 w-auto object-contain"></a>
             </div>
-            <div class="flex items-center justify-center flex-wrap gap-x-4 md:gap-x-8 gap-y-2 text-xs sm:text-sm font-bold text-gray-600">
-                <a href="index.html#home" class="hover:text-emerald-900 transition-colors">Home</a>
-                <a href="about.html" class="hover:text-emerald-900 transition-colors">About</a>
-                <a href="esg-solutions.html" class="hover:text-emerald-900 transition-colors whitespace-nowrap">ESG Solutions</a>
-                <a href="mosspay.html" class="text-emerald-950 border-b-2 border-emerald-900 pb-0.5">MossPay</a>
-                <a href="contact.html" class="hover:text-emerald-900 transition-colors">Contact</a>
+            <button onclick="toggleMobileMenu()" class="block lg:hidden text-gray-600 hover:text-emerald-900 focus:outline-none z-50">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <div id="navMenu" class="hidden lg:flex flex-col lg:flex-row absolute lg:relative top-36 lg:top-0 left-0 w-full lg:w-auto bg-white/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border-b border-gray-100 lg:border-none px-6 lg:px-0 py-6 lg:py-0 space-y-4 lg:space-y-0 lg:space-x-8 text-sm font-bold text-gray-600 shadow-lg lg:shadow-none transition-all duration-300">
+                <a href="index.html#home" class="hover:text-emerald-900 transition-colors w-max">Home</a>
+                <a href="about.html" class="hover:text-emerald-900 transition-colors w-max">About</a>
+                <a href="esg-solutions.html" class="hover:text-emerald-900 transition-colors whitespace-nowrap w-max">ESG Solutions</a>
+                <a href="mosspay.html" class="text-emerald-950 border-b-2 border-emerald-900 pb-1 w-max">MossPay</a>
+                <a href="contact.html" class="hover:text-emerald-900 transition-colors w-max">Contact</a>
             </div>
         </div>
     </nav>
@@ -126,6 +129,7 @@
     </section>
 
     <script>
+        function toggleMobileMenu() { const menu = document.getElementById('navMenu'); menu.classList.toggle('hidden'); menu.classList.toggle('flex'); }
         const canvas = document.getElementById('leafCanvas'); const ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resizeCanvas); resizeCanvas();
