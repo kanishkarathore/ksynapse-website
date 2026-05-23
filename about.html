@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About KSynapse — Our Ecosystem & Philosophy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black font-sans selection:bg-emerald-100 selection:text-emerald-900 scroll-smooth relative overflow-x-hidden">
+
+    <canvas id="leafCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <nav class="fixed top-0 w-full z-50 bg-transparent">
+        <div class="max-w-7xl mx-auto px-6 h-36 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="index.html"><img src="assets/logo.png" alt="KSynapse Logo" class="h-32 w-auto object-contain"></a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-bold text-gray-600">
+                <a href="index.html#home" class="hover:text-emerald-900 transition-colors">Home</a>
+                <a href="about.html" class="text-emerald-950 border-b-2 border-emerald-900 pb-1">About</a>
+                <a href="esg-solutions.html" class="hover:text-emerald-900 transition-colors">ESG Solutions</a>
+                <a href="mosspay.html" class="hover:text-emerald-900 transition-colors">MossPay</a>
+                <a href="contact.html" class="hover:text-emerald-900 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative z-10 pt-56 pb-20 max-w-5xl mx-auto px-6 flex flex-col justify-center items-center text-center bg-transparent">
+        <div class="mb-6 px-4 py-1.5 text-xs font-black tracking-widest uppercase text-emerald-900 bg-emerald-100/80 border border-emerald-200/30 rounded-full backdrop-blur-sm">Ecosystem Blueprint</div>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-black tracking-tight leading-tight max-w-4xl">Shaping the Future of <span class="text-emerald-950">Ecosystem Intelligence</span></h1>
+        <p class="mt-6 text-gray-600 text-base md:text-xl max-w-2xl leading-relaxed">Discover the philosophy, driving values, and core pillars behind KSynapse—where deep-tech innovation directly empowers global planet health.</p>
+        <div class="h-1 w-16 bg-emerald-900 mx-auto mt-10 rounded-full"></div>
+    </header>
+
+    <section class="relative z-10 py-20 max-w-5xl mx-auto px-6 bg-transparent">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+            <h2 class="text-3xl font-black text-black tracking-tight uppercase border-l-4 border-emerald-900 pl-4">Who We Are</h2>
+            <div class="lg:col-span-2 space-y-6 text-gray-600 text-base md:text-lg leading-relaxed">
+                <p>KSynapse operates as a modern innovation house built at the intersection of deep software development and strict environmental compliance. We address one of the greatest corporate hurdles of our era: translating abstract climate accountability into direct, automated software operations.</p>
+                <p>By coupling technical expertise with a deeply rooted passion for environmental preservation, we deliver dual value. We help large corporate bodies analyze metrics via our **ESG Solutions**, while building autonomous decentralized infrastructure like **MossPay** to create an economy where carbon functions seamlessly as a verified transaction variable.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative z-10 py-24 bg-transparent border-t border-gray-150">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="space-y-4 border border-gray-100 p-8 rounded-2xl hover:border-emerald-900/20 bg-white/40 backdrop-blur-md transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-900 flex items-center justify-center text-xl font-bold">👁️</div>
+                    <h3 class="text-xl font-black text-black">Our Vision</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">To cultivate a future where global industrial progress and planetary health naturally sustain each other, driven by intelligent digital infrastructure.</p>
+                </div>
+                <div class="space-y-4 border border-gray-100 p-8 rounded-2xl hover:border-emerald-900/20 bg-white/40 backdrop-blur-md transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-950 text-white flex items-center justify-center text-xl font-bold">🚀</div>
+                    <h3 class="text-xl font-black text-black">Our Mission</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">To construct data-backed frameworks and secure micro-transaction engines that seamlessly convert complex sustainability goals into smooth, automated corporate assets.</p>
+                </div>
+                <div class="space-y-4 border border-gray-100 p-8 rounded-2xl hover:border-emerald-900/20 bg-white/40 backdrop-blur-md transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-900 flex items-center justify-center text-xl font-bold">🎯</div>
+                    <h3 class="text-xl font-black text-black">Our Aim</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">To fully unify strategic ESG compliance with decentralized wallet networks, lowering onboarding resistance for enterprises transitioning into a green marketplace.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const canvas = document.getElementById('leafCanvas'); const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas); resizeCanvas();
+        const leafSources = ['assets/leaf1.png', 'assets/leaf2.png', 'assets/leaf3.png', 'assets/leaf4.png', 'assets/leaf5.png'];
+        const leafImages = leafSources.map(src => { const img = new Image(); img.src = src; return img; });
+        const leaves = []; const stackedLeaves = [];
+        class LocalLeaf {
+            constructor() { this.reset(); this.y = Math.random() * -canvas.height; }
+            reset() { this.x = Math.random() * canvas.width; this.y = -50; this.size = Math.random() * 35 + 30; this.speedY = Math.random() * 1.5 + 1.0; this.speedX = Math.random() * 1.0 - 0.5; this.angle = Math.random() * Math.PI * 2; this.spinSpeed = Math.random() * 0.02 - 0.01; this.imgIndex = Math.floor(Math.random() * leafImages.length); this.opacity = Math.random() * 0.4 + 0.6; }
+            update() { this.y += this.speedY; this.x += this.speedX + Math.sin(this.y / 40) * 0.5; if (this.y >= canvas.height - (this.size / 2)) { stackedLeaves.push({ x: this.x, y: canvas.height - (Math.random() * 10 + 4), size: this.size, angle: this.angle, imgIndex: this.imgIndex, opacity: this.opacity }); this.reset(); } }
+            draw() { const img = leafImages[this.imgIndex]; ctx.save(); ctx.translate(this.x, this.y); ctx.rotate(this.angle); ctx.globalAlpha = this.opacity; ctx.drawImage(img, -this.size / 2, -this.size / 2, this.size, this.size); ctx.restore(); }
+        }
+        for (let i = 0; i < 20; i++) leaves.push(new LocalLeaf());
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stackedLeaves.forEach(sl => { const img = leafImages[sl.imgIndex]; ctx.save(); ctx.translate(sl.x, sl.y); ctx.rotate(sl.angle); ctx.globalAlpha = sl.opacity; ctx.drawImage(img, -sl.size / 2, -sl.size / 2, sl.size, sl.size); ctx.restore(); });
+            if (stackedLeaves.length > 200) stackedLeaves.shift();
+            leaves.forEach(leaf => { leaf.update(); leaf.draw(); }); requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESG Solutions — KSynapse Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black font-sans selection:bg-emerald-100 selection:text-emerald-900 scroll-smooth relative overflow-x-hidden">
+
+    <canvas id="leafCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <div id="comingSoonModal" class="fixed inset-0 z-50 hidden bg-white/90 backdrop-blur-md flex flex-col justify-center items-center text-center p-6">
+        <div class="max-w-md space-y-6 flex flex-col items-center">
+            <img src="assets/logo.png" alt="KSynapse Logo" class="h-44 w-auto object-contain animate-pulse">
+            <h2 class="text-3xl font-black text-black tracking-tight">PORTAL COMING SOON</h2>
+            <p class="text-gray-500 text-sm leading-relaxed">Our active enterprise data system is currently undergoing structural testing. This interface will merge seamlessly with the main portal shortly.</p>
+            <button onclick="toggleModal()" class="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-emerald-900 bg-emerald-50 hover:bg-emerald-100 rounded-full cursor-pointer">Back To Solutions</button>
+        </div>
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 bg-transparent">
+        <div class="max-w-7xl mx-auto px-6 h-36 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="index.html"><img src="assets/logo.png" alt="KSynapse Logo" class="h-32 w-auto object-contain"></a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-bold text-gray-600">
+                <a href="index.html#home" class="hover:text-emerald-900 transition-colors">Home</a>
+                <a href="about.html" class="hover:text-emerald-900 transition-colors">About</a>
+                <a href="esg-solutions.html" class="text-emerald-950 border-b-2 border-emerald-900 pb-1">ESG Solutions</a>
+                <a href="mosspay.html" class="hover:text-emerald-900 transition-colors">MossPay</a>
+                <a href="contact.html" class="hover:text-emerald-900 transition-colors">Contact</a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative z-10 pt-56 pb-20 max-w-5xl mx-auto px-6 flex flex-col justify-center items-center text-center bg-transparent">
+        <div class="mb-6 px-4 py-1.5 text-xs font-black tracking-widest uppercase text-emerald-900 bg-emerald-100/80 border border-emerald-200/30 rounded-full backdrop-blur-sm">Corporate Climate Compliance</div>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-black tracking-tight leading-tight max-w-4xl">ESG Strategic <span class="text-emerald-950">Consulting Layer</span></h1>
+        <p class="mt-6 text-gray-600 text-base md:text-xl max-w-2xl leading-relaxed">A high-level look at how we audit organizational operations, process environmental liabilities, and prepare systems for global regulatory integration.</p>
+        <div class="h-1 w-16 bg-emerald-900 mx-auto mt-10 rounded-full"></div>
+    </header>
+
+    <section class="relative z-10 py-16 max-w-6xl mx-auto px-6 bg-transparent">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="bg-white/40 backdrop-blur-md border border-gray-100 p-8 rounded-3xl space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-emerald-700 tracking-wider font-mono uppercase">[ 01 . Compliance Mapping ]</span>
+                <h3 class="text-2xl font-black text-black">Regulatory Alignment</h3>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed">We parse localized and global climate data parameters, ensuring your supply chain networks smoothly adhere to emerging sustainability standards and legal mandates.</p>
+            </div>
+            <div class="bg-white/40 backdrop-blur-md border border-gray-100 p-8 rounded-3xl space-y-4 shadow-sm">
+                <span class="text-xs font-bold text-emerald-700 tracking-wider font-mono uppercase">[ 02 . Footprint Auditing ]</span>
+                <h3 class="text-2xl font-black text-black">Carbon Reporting Data</h3>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed">We structure precise reporting tracks that help modern enterprises extract greenhouse gas metrics, setting up clean corporate transparency for auditing cycles.</p>
+            </div>
+        </div>
+        <div class="mt-20 text-center">
+            <button onclick="toggleModal()" class="px-10 py-5 bg-emerald-950 text-white text-sm font-bold rounded-xl shadow-md hover:bg-black transition-all cursor-pointer">Visit Full Consulting Portal →</button>
+        </div>
+    </section>
+
+    <script>
+        const canvas = document.getElementById('leafCanvas'); const ctx = canvas.getContext('2d');
+        function toggleModal() { const modal = document.getElementById('comingSoonModal'); modal.classList.toggle('hidden'); }
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas); resizeCanvas();
+        const leafSources = ['assets/leaf1.png', 'assets/leaf2.png', 'assets/leaf3.png', 'assets/leaf4.png', 'assets/leaf5.png'];
+        const leafImages = leafSources.map(src => { const img = new Image(); img.src = src; return img; });
+        const leaves = []; const stackedLeaves = [];
+        class LocalLeaf {
+            constructor() { this.reset(); this.y = Math.random() * -canvas.height; }
+            reset() { this.x = Math.random() * canvas.width; this.y = -50; this.size = Math.random() * 35 + 30; this.speedY = Math.random() * 1.5 + 1.0; this.speedX = Math.random() * 1.0 - 0.5; this.angle = Math.random() * Math.PI * 2; this.spinSpeed = Math.random() * 0.02 - 0.01; this.imgIndex = Math.floor(Math.random() * leafImages.length); this.opacity = Math.random() * 0.4 + 0.6; }
+            update() { this.y += this.speedY; this.x += this.speedX + Math.sin(this.y / 40) * 0.5; if (this.y >= canvas.height - (this.size / 2)) { stackedLeaves.push({ x: this.x, y: canvas.height - (Math.random() * 10 + 4), size: this.size, angle: this.angle, imgIndex: this.imgIndex, opacity: this.opacity }); this.reset(); } }
+            draw() { const img = leafImages[this.imgIndex]; ctx.save(); ctx.translate(this.x, this.y); ctx.rotate(this.angle); ctx.globalAlpha = this.opacity; ctx.drawImage(img, -this.size / 2, -this.size / 2, this.size, this.size); ctx.restore(); }
+        }
+        for (let i = 0; i < 20; i++) leaves.push(new LocalLeaf());
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stackedLeaves.forEach(sl => { const img = leafImages[sl.imgIndex]; ctx.save(); ctx.translate(sl.x, sl.y); ctx.rotate(sl.angle); ctx.globalAlpha = sl.opacity; ctx.drawImage(img, -sl.size / 2, -sl.size / 2, sl.size, sl.size); ctx.restore(); });
+            if (stackedLeaves.length > 200) stackedLeaves.shift();
+            leaves.forEach(leaf => { leaf.update(); leaf.draw(); }); requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
