@@ -10,33 +10,31 @@
 
     <canvas id="leafCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-md border-b border-gray-100/50">
-        <div class="max-w-7xl mx-auto px-6 h-36 flex items-center justify-between">
+    <nav class="fixed top-0 w-full z-50 bg-transparent">
+        <div class="max-w-7xl mx-auto px-6 h-36 flex flex-col sm:flex-row items-center justify-between pt-4 sm:pt-0 gap-2">
             
             <div class="flex items-center">
-                <img src="assets/logo.png" alt="KSynapse Logo" class="h-32 w-auto object-contain">
+                <img src="assets/logo.png" alt="KSynapse Logo" class="h-24 sm:h-32 w-auto object-contain">
             </div>
             
-            <div class="hidden lg:flex items-center space-x-6 text-sm font-bold text-gray-600">
-                <a href="#home" class="hover:text-emerald-900 transition-colors">Home</a>
+            <div class="flex items-center justify-center flex-wrap gap-x-4 md:gap-x-8 gap-y-2 text-xs sm:text-sm font-bold text-gray-600">
+                <a href="#home" class="text-emerald-950 border-b-2 border-emerald-900 pb-0.5">Home</a>
                 <a href="about.html" class="hover:text-emerald-900 transition-colors">About</a>
-                <a href="esg-solutions.html" class="hover:text-emerald-900 transition-colors">ESG Solutions</a>
+                <a href="esg-solutions.html" class="hover:text-emerald-900 transition-colors whitespace-nowrap">ESG Solutions</a>
                 <a href="mosspay.html" class="hover:text-emerald-900 transition-colors">MossPay</a>
-                <a href="#contact" class="hover:text-emerald-900 transition-colors">Contact</a>
-                
-                
+                <a href="contact.html" class="hover:text-emerald-900 transition-colors">Contact</a>
             </div>
 
         </div>
     </nav>
 
-    <header id="home" class="relative z-10 pt-56 pb-24 min-h-[90vh] max-w-5xl mx-auto px-6 flex flex-col justify-center items-center text-center bg-transparent">
+    <header id="home" class="relative z-10 pt-72 pb-24 min-h-[95vh] max-w-5xl mx-auto px-6 flex flex-col justify-center items-center text-center bg-transparent">
         
         <div class="mb-6 px-4 py-1.5 text-xs font-black tracking-widest uppercase text-emerald-900 bg-emerald-100/80 border border-emerald-200/30 rounded-full backdrop-blur-sm">
             Innovation • Sustainability • Technology
         </div>
         
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-black tracking-tight leading-tight max-w-4xl">
+        <h1 class="text-4xl md:text-6xl font-black text-black tracking-tight leading-tight max-w-4xl">
             Building Intelligent Ventures For A <span class="text-emerald-950">Sustainable Future</span>
         </h1>
         
@@ -48,7 +46,7 @@
             <a href="#ventures" class="px-8 py-4 rounded-xl bg-emerald-950 text-white font-bold text-sm hover:bg-black transition-all shadow-md hover:-translate-y-0.5 duration-200">
                 Explore Ventures
             </a>
-            <a href="#contact" class="px-8 py-4 rounded-xl bg-gray-100 text-gray-900 font-bold text-sm hover:bg-gray-200 transition-all hover:-translate-y-0.5 duration-200">
+            <a href="contact.html" class="px-8 py-4 rounded-xl bg-gray-100 text-gray-900 font-bold text-sm hover:bg-gray-200 transition-all hover:-translate-y-0.5 duration-200">
                 Get Started
             </a>
         </div>
@@ -88,7 +86,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 
-                <div class="bg-white/40 backdrop-blur-xs border border-gray-100 p-8 md:p-10 rounded-3xl flex flex-col justify-between hover:border-emerald-900/20 hover:bg-white/60 transition-all duration-300">
+                <div class="bg-white/40 backdrop-blur-md border border-gray-100 p-8 md:p-10 rounded-3xl flex flex-col justify-between hover:border-emerald-900/20 hover:bg-white/60 transition-all duration-300 shadow-sm">
                     <div class="space-y-6">
                         <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-black text-xl">
                             E
@@ -119,7 +117,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white/40 backdrop-blur-xs border border-gray-100 p-8 md:p-10 rounded-3xl flex flex-col justify-between hover:border-emerald-900/20 hover:bg-white/60 transition-all duration-300">
+                <div class="bg-white/40 backdrop-blur-md border border-gray-100 p-8 md:p-10 rounded-3xl flex flex-col justify-between hover:border-emerald-900/20 hover:bg-white/60 transition-all duration-300 shadow-sm">
                     <div class="space-y-6">
                         <div class="w-14 h-14 rounded-2xl bg-emerald-950 text-white flex items-center justify-center font-black text-xl">
                             M
@@ -145,8 +143,8 @@
                     </div>
                     <div class="mt-8">
                         <a href="mosspay.html" class="block w-full py-4 bg-gray-100 text-gray-900 text-center rounded-xl font-bold text-sm hover:bg-gray-200 transition-colors">
-    Explore MossPay
-</a>
+                            Explore MossPay
+                        </a>
                     </div>
                 </div>
 
@@ -165,14 +163,7 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        const leafSources = [
-            'assets/leaf1.png',
-            'assets/leaf2.png',
-            'assets/leaf3.png',
-            'assets/leaf4.png',
-            'assets/leaf5.png'
-        ];
-
+        const leafSources = ['assets/leaf1.png', 'assets/leaf2.png', 'assets/leaf3.png', 'assets/leaf4.png', 'assets/leaf5.png'];
         const leafImages = leafSources.map(src => {
             const img = new Image();
             img.src = src;
@@ -187,79 +178,45 @@
                 this.reset();
                 this.y = Math.random() * -canvas.height; 
             }
-
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = -50;
-                // Boosted Proportional Leaf Size Bounds 
                 this.size = Math.random() * 35 + 30; 
                 this.speedY = Math.random() * 1.5 + 1.0; 
-                this.speedX = Math.random() * 1.0 - 0.4; 
+                this.speedX = Math.random() * 1.0 - 0.5; 
                 this.angle = Math.random() * Math.PI * 2;
                 this.spinSpeed = Math.random() * 0.02 - 0.01;
                 this.imgIndex = Math.floor(Math.random() * leafImages.length);
                 this.opacity = Math.random() * 0.4 + 0.6; 
             }
-
             update() {
                 this.y += this.speedY;
                 this.x += this.speedX + Math.sin(this.y / 40) * 0.5; 
-
                 if (this.y >= canvas.height - (this.size / 2)) {
-                    stackedLeaves.push({
-                        x: this.x,
-                        y: canvas.height - (Math.random() * 10 + 4),
-                        size: this.size,
-                        angle: this.angle,
-                        imgIndex: this.imgIndex,
-                        opacity: this.opacity
-                    });
+                    stackedLeaves.push({ x: this.x, y: canvas.height - (Math.random() * 10 + 4), size: this.size, angle: this.angle, imgIndex: this.imgIndex, opacity: this.opacity });
                     this.reset();
                 }
             }
-
             draw() {
                 const img = leafImages[this.imgIndex];
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.angle);
-                ctx.globalAlpha = this.opacity;
-                ctx.drawImage(img, -this.size / 2, -this.size / 2, this.size, this.size);
-                ctx.restore();
+                ctx.save(); ctx.translate(this.x, this.y); ctx.rotate(this.angle); ctx.globalAlpha = this.opacity;
+                ctx.drawImage(img, -this.size / 2, -this.size / 2, this.size, this.size); ctx.restore();
             }
         }
 
-        for (let i = 0; i < 25; i++) {
-            leaves.push(new LocalLeaf());
-        }
+        for (let i = 0; i < 25; i++) leaves.push(new LocalLeaf());
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // 1. Render ground layer leaf piles
             stackedLeaves.forEach(sl => {
                 const img = leafImages[sl.imgIndex];
-                ctx.save();
-                ctx.translate(sl.x, sl.y);
-                ctx.rotate(sl.angle);
-                ctx.globalAlpha = sl.opacity;
-                ctx.drawImage(img, -sl.size / 2, -sl.size / 2, sl.size, sl.size);
-                ctx.restore();
+                ctx.save(); ctx.translate(sl.x, sl.y); ctx.rotate(sl.angle); ctx.globalAlpha = sl.opacity;
+                ctx.drawImage(img, -sl.size / 2, -sl.size / 2, sl.size, sl.size); ctx.restore();
             });
-
-            if (stackedLeaves.length > 300) {
-                stackedLeaves.shift();
-            }
-
-            // 2. Compute dynamic flying paths
-            leaves.forEach(leaf => {
-                leaf.update();
-                leaf.draw();
-            });
-
+            if (stackedLeaves.length > 300) stackedLeaves.shift();
+            leaves.forEach(leaf => { leaf.update(); leaf.draw(); });
             requestAnimationFrame(animate);
         }
-
         animate();
     </script>
 
